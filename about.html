@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact - CS Hub</title>
+  <link rel="stylesheet" href="css\styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="manifest" href="../images/site.webmanifest">
+</head>
+<body>
+  <header>
+    <h1>About</h1>
+  </header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="index.html#resources">Resources</a>
+  </nav>
+  <main>
+    <section class="about-section">
+      <section class="info-us">
+      <h2>About us</h2>
+      <p>
+        We are located at KNUST, Kumasi. For more info, reach 
+        out to us via any of our social media handles or Send
+        us a message via email. 
+      </p>
+      </section>
+      <section class="dev-board">
+      <h2>Developers Board</h2>
+      <p>
+        Our developers help us in maintaining
+        the day to day activities of this site
+        and we are much greatful to have them
+        by our side in everything
+      </p>
+      </section>
+      <section class="aim-section">
+        <h2>Aim</h2>
+        <p>
+          Our aim is to provide a comprehensive platform for computer science learners, 
+          offering resources, tutorials, and community support to enhance their learning experience.
+        </p>
+      </section>
+    </section>
+    <section class="contact-section">
+      <h2>Get in Touch</h2>
+      <form class="contact-form" autocomplete="off">
+        <div class="form-group">
+          <input type="text" id="name" name="name" required placeholder=" " />
+          <label for="name">Name</label>
+        </div>
+        <div class="form-group">
+          <input type="email" id="email" name="email" required placeholder=" " />
+          <label for="email">Email</label>
+        </div>
+        <div class="form-group">
+          <textarea id="message" name="message" rows="5" required placeholder=" "></textarea>
+          <label for="message">Message</label>
+        </div>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+  </main>
+  <footer>
+    &copy; 2025 CS Hub &mdash; Made for Computer Science Learners
+  </footer>
+  <div class="toast" id="toast"></div>
+  <script>
+    // Custom Toast Notification
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2600);
+    }
+
+    // Form Handler
+    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      showToast('Thank you for reaching out! We\'ll get back to you soon.');
+      this.reset();
+    });
+
+    // Accessibility: Focus label on input focus
+    document.querySelectorAll('.contact-form input, .contact-form textarea').forEach(el => {
+      el.addEventListener('focus', function() {
+        this.nextElementSibling.classList.add('active');
+      });
+      el.addEventListener('blur', function() {
+        if (!this.value) this.nextElementSibling.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>
